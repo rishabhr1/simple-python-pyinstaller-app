@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh "py sources/add2vals.py 2 3" 
+                sh "python sources/add2vals.py 2 3" 
             }
             post {
                 success {
