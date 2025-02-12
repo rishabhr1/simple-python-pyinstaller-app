@@ -13,12 +13,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 sh "python sources/add2vals.py 2 3" 
-            }
-            post {
-                success {
-                    archiveArtifacts 'dist/add2vals' 
-                }
-            }
+            }            
         }
     }
 }
