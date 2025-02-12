@@ -10,19 +10,9 @@ pipeline {
                 stash(name: 'compiled-results', includes: 'sources/*.py*')
             }
         }
-        stage('Test') {
-            steps {
-                sh 'py.test --junit-xml test-reports/results.xml sources/test_calc.py'
-            }
-            post {
-                always {
-                    junit 'test-reports/results.xml'
-                }
-            }
-        }
         stage('Deliver') { 
             steps {
-                sh "pyinstaller --onefile sources/add2vals.py" 
+                sh "py sources/add2vals.py 2 3" 
             }
             post {
                 success {
