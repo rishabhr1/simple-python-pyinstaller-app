@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    stages {
+        stage("Checkout Python-Project") {
+            steps {
+                echo "Checkout Python-Project"
+            }    
+        }
+        stage("Clean - Python-Project") {
+            steps {
+                echo "Clean - Python-Project"
+            }
+        }
+        stage("Build - Python-Project") {
+            steps {
+                echo "Build - Python-Project"
+            }
+        }
+        stage("Test - Python-Project") {
+            steps {
+                echo "Test - Python-Project"
+            }
+        }
+        stage('User Acceptance Test - Python-Project') {
+            steps {
+                echo "User Acceptance Test - Python-Project"
+            }
+        }
+
+        stage('Release Package - Python-Project') {
+            steps {
+                echo "Release Package - Python-Project"
+            }
+        }
+        stage('Deploy- Python-Project') {
+            steps {
+                echo "Deploy- Python-Project"
+            }
+        }
+    }
+}

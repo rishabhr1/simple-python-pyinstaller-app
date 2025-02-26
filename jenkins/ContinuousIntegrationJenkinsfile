@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    stages {
+        stage("Checkout Python-Project") {
+            steps {
+                echo "Checkout Python-Project"
+                git branch: 'master', url: 'https://github.com/nag9s/simple-python-pyinstaller-app.git'
+            }
+        }
+        stage("Build - Python-Project") {
+            steps {
+                echo "Build - Python-Project"
+                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+                stash(name: 'compiled-results', includes: 'sources/*.py*')
+            }
+        }        
+    }
+}

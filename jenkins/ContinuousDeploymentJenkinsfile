@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    stages {
+        stage("Checkout Python-Project") {
+            steps {
+                echo "Checkout Python-Project"
+                git branch: 'master', url: 'https://github.com/nag9s/simple-python-pyinstaller-app.git'
+            }
+        }
+        stage("Build - Python-Project") {
+            steps {
+                echo "Build - Python-Project"
+                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+                stash(name: 'compiled-results', includes: 'sources/*.py*')
+            }
+        }   
+        stage('Deploy- Python-Project') {
+            steps {
+                sh "python sources/add2vals.py 2 3"
+                echo 'Operations team can deploy Python-Project'
+            }
+        }
+    }
+}
